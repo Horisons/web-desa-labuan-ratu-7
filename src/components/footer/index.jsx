@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Footer(){
   return (
-    <footer className="bg-gray-900 text-gray-100 py-12">
+    <footer className="bg-red-500 text-gray-100 py-12">
       <div className="container mx-auto px-6">
         {/* Heading dan CTA */}
         <div className="text-center mb-12">
@@ -60,7 +60,7 @@ export default function Footer(){
 
         {/* Copyright */}
         <div className="text-center mt-12">
-          <p className="text-gray-500 text-sm">© 2024 Kawal Desa. Semua hak cipta dilindungi.</p>
+          <p className="text-white text-sm">© 2024 Kawal Desa. Semua hak cipta dilindungi.</p>
         </div>
       </div>
     </footer>

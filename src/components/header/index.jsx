@@ -1,41 +1,10 @@
-
+// Header.js
 import header from '../../assets/tent-1.jpg';
 import log from '../../assets/tent-2.jpg';
 import bgHeader from '../../assets/header-bg.png';
-import {fetchVillageProfile} from '../../helpers/service';
-import { useEffect, useState } from 'react';
 
 
 export default function Header() {
-  const [profile, setProfile] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const getData = async () => {
-      try {        
-
-        const [profileData] = await Promise.all([
-          fetchVillageProfile()
-        ]);
-        
-        console.log('Profile Data:', profileData);
-
-        setProfile(profileData);
-      } catch (err) {
-        console.error('Error fetching data:', err);
-        setError(err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    getData();
-  }, []);
-
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error loading data: {error.message}</div>;
-
   return (
     <header 
       className="relative bg-cover bg-center bg-no-repeat h-screen" 
@@ -54,17 +23,17 @@ export default function Header() {
 
           {/* Main Title */}
           <h2 className="text-3xl lg:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight font-header relative">
-            Braja Kencana
+            Braja Harjosari
             <span className="block w-12 h-1 bg-red-600 mt-2 mx-auto"></span>
           </h2>
 
           <p className="text-sm font-semibold text-gray-800 mb-2 relative inline-block">
-            Desa Braja Kencana
+            Desa Braja Harjosari
           </p>
 
           {/* Description */}
           <p className="text-base lg:text-lg text-gray-700 mb-6 leading-relaxed">
-            Braja Kencana adalah sebuah kecamatan di Kabupaten Lampung Timur, Provinsi Lampung, Indonesia. Desa ini memiliki pemandangan alam yang indah dan budaya lokal yang kaya.
+            Braja Harjosari adalah sebuah kecamatan di Kabupaten Lampung Timur, Provinsi Lampung, Indonesia. Desa ini memiliki pemandangan alam yang indah dan budaya lokal yang kaya.
           </p>
         </div>
 
