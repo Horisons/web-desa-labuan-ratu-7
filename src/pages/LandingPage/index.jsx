@@ -5,6 +5,7 @@ import Navbar from "../../components/navbar/Index";
 import News from "../../components/news/Index";
 import Stastistic from "../../components/stastistic/Index";
 import VillageActivities from "../../components/villageActivities/Index";
+
 import VillageArea from "../../components/villageArea";
 import VillageMarket from "../../components/villageMarket/Index";
 import WebsiteOverview from "../../components/webOverview/Index";
@@ -18,10 +19,10 @@ export default function LandingPage() {
             <WebsiteOverview/>
             <Apparatus/>
             <News/>
-            <VillageMarket/>
             <VillageActivities/>
-            <VillageArea/>
-            <Footer/>
+            <VillageMarket/>
+             <VillageArea/>
+            <Footer/> 
         </>
     )
 }

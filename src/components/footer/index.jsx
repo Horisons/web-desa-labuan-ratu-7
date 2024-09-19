@@ -1,23 +1,38 @@
 import React from 'react';
+import { useVillageProfile } from '../../hooks/useAPI';
+import { Link } from 'react-router-dom';
 
-export default function Footer(){
+
+export default function Footer() {
+  const { profile, loading, error } = useVillageProfile();
+  
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>{error}</div>;
+  
+  const {
+    name,
+    address,
+    email,
+    logo
+  } = profile || {};
+
   return (
     <footer className="bg-red-500 text-gray-100 py-12">
       <div className="container mx-auto px-6">
-        {/* Heading dan CTA */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-white mb-4">
-            Sudah Siap Menjadi Bagian dari Kawal Desa?
-          </h2>
-          <p className="text-lg text-gray-300 mb-6">
-            Bergabunglah dengan kami dalam upaya membangun dan mengembangkan desa kami. Dapatkan informasi lebih lanjut dan mulai berkontribusi hari ini!
-          </p>
-          <a
-            href="#contact"
-            className="bg-yellow-500 text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-yellow-600 transition duration-300"
-          >
-            Hubungi Kami
-          </a>
+
+        {/* Footer Logo */}
+        <div className="text-2xl font-bold flex items-center space-x-4 mb-6">
+          <Link to="/" className="flex items-center hover:text-gray-200">
+            <img
+              src={logo ? `https://bucket-2.nos.wjv-1.neo.id/${logo}` : 'Default'}
+              alt="Logo Instansi"
+              className="w-12 h-12 object-cover"
+            />
+            <div className="flex flex-col ml-2">
+              <span className="text-xl">{name || 'Default Name'}</span>
+              <span className="text-sm">{address || 'Default District'}</span>
+            </div>
+          </Link>
         </div>
 
         {/* Footer Links */}
@@ -35,19 +50,17 @@ export default function Footer(){
           {/* Alamat */}
           <div>
             <h3 className="text-xl font-bold text-white mb-4">Alamat</h3>
-            <p className="text-gray-300">Jl. Contoh No.123, Desa Contoh, Kode Pos 12345</p>
-            <p className="text-gray-300 mt-2">Telp: (021) 123-4567</p>
-            <p className="text-gray-300">Email: info@kawaldesa.com</p>
-          </div>
-          {/* Ikuti Kami */}
-          <div>
-            <h3 className="text-xl font-bold text-white mb-4">Ikuti Kami</h3>
-            <ul className="flex justify-center space-x-6">
-              <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition duration-300"><i className="fab fa-facebook-f"></i></a></li>
-              <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition duration-300"><i className="fab fa-twitter"></i></a></li>
-              <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition duration-300"><i className="fab fa-instagram"></i></a></li>
-            </ul>
-          </div>
+            {address ? (
+              <p className="text-gray-300">{address}</p>
+            ) : (
+              <p className="text-gray-300">Alamat belum tersedia</p>
+            )}
+            {email ? (
+              <p className="text-gray-300 mt-2">Email: <a href={`mailto:${email}`} className="hover:text-yellow-400">{email}</a></p>
+            ) : (
+              <p className="text-gray-300 mt-2">Email belum tersedia</p>
+            )}
+          </div>          
           {/* Kebijakan */}
           <div>
             <h3 className="text-xl font-bold text-white mb-4">Kebijakan</h3>
@@ -60,10 +73,9 @@ export default function Footer(){
 
         {/* Copyright */}
         <div className="text-center mt-12">
-          <p className="text-white text-sm">© 2024 Kawal Desa. Semua hak cipta dilindungi.</p>
+          <p className="text-white text-sm">© 2024 {name || "Kawal Desa"}. Semua hak cipta dilindungi.</p>
         </div>
       </div>
     </footer>
   );
 };
-
