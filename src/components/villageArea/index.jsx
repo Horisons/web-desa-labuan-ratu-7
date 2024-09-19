@@ -43,9 +43,6 @@ export default function VillageMap() {
                   <Popup>Batas wilayah desa</Popup>
                 </Polygon>
               )}
-              <Marker position={balaiDesaPosition}>
-                <Popup>Balai Desa Labuhan Ratu VII</Popup>
-              </Marker>
             </MapContainer>
           </div>
 

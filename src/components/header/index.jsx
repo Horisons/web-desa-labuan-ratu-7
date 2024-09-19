@@ -2,11 +2,12 @@ import React from 'react';
 import headerBg from '../../assets/header-bg.png';
 import defaultImg from '../../assets/tent-1.jpg';
 import { useVillageProfile } from '../../hooks/useAPI';
+import Loader from '../_shared/loader';
 
 export default function Header() {
   const { profile, loading, error } = useVillageProfile();
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div><Loader/></div>;
   if (error) return <div>{error}</div>;
 
   const defaultProfile = {
